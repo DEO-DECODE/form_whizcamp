@@ -7,9 +7,9 @@ const UserForm = () => {
     lastname: "",
     email: "",
     education: "",
-    skills: "",
+    skills: [],
     workplace: "",
-    hobbies: "",
+    hobbies: [],
     password: "",
   });
 
@@ -22,20 +22,21 @@ const UserForm = () => {
   };
   const handleSkillsChange = (e) => {
     const { value } = e.target;
+    const skillsArray = value.replace(/,/g, " ").split(/\s+/);
     setFormData((prevData) => ({
       ...prevData,
-      skills: value,
+      skills: skillsArray,
     }));
   };
 
   const handleHobbiesChange = (e) => {
     const { value } = e.target;
+    const hobbiesArray = value.replace(/,/g, " ").split(/\s+/);
     setFormData((prevData) => ({
       ...prevData,
-      hobbies: value,
+      hobbies: hobbiesArray,
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,7 +51,20 @@ const UserForm = () => {
 
       if (!response.ok) {
         console.error(`HTTP error! Status: ${response.status}`);
-        // Handle the error case here
+        const responseData = await response.json(); // Log the response data
+        console.log(responseData);
+
+        if (responseData.errors) {
+          // Handle validation errors
+          const errorMessages = responseData.errors
+            .map((error) => error.message)
+            .join("\n");
+          alert(`Validation Error:\n${errorMessages}`);
+        } else {
+          // Handle other types of errors
+          alert(responseData.message || "Something went wrong");
+        }
+
         return;
       }
 
@@ -69,13 +83,12 @@ const UserForm = () => {
           password: "",
         });
       } else {
-        alert("Error in Registering User");
+        alert(data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      alert("Something went wrong");
     }
-
-    console.log("Form submitted:", formData);
   };
 
   return (
