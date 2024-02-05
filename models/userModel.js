@@ -30,28 +30,8 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   workplace: {
-    address: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: String,
-      required: true,
-    },
-
-    state: {
-      type: String,
-      required: true,
-    },
-
-    country: {
-      type: String,
-      required: true,
-    },
-    pinCode: {
-      type: Number,
-      required: true,
-    },
+    type: String,
+    required: true,
   },
   hobbies: {
     type: [String],
@@ -64,4 +44,4 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
 });
-module.exports = mongoose.model("User", userSchema,"User");
+module.exports = mongoose.model("User", userSchema, "User");
