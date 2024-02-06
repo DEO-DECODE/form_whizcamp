@@ -13,26 +13,52 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0px;
+  height: 72px;
+  background-color: #FFE061;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+#heading{
+  font-family: 'Nunito', sans-serif;
+  font-size: 45px;
+  margin: 0px 2rem;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around;
+}
+.leftContainer{
+  /* border: 2px solid green; */
+  height: 442px;
+  width: 456px;
+  margin: auto 0px;
+}
+.text1{
+  display: flex;
+  width: 445px;
+  height: 349px;
+  margin: auto;
+  background: #1E1E1E;
   color: white;
+  border-radius: 50%;
+  font-family: 'Nunito', sans-serif;
+  font-size: 40px;
+  justify-content: center;
+  align-items: center;
 }
-
-.App-link {
-  color: #61dafb;
+.text2{
+  height: 34px;
+  width: 278px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  margin: 28px auto;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rightContainer{
+  width: 50%;
+  height: 100%;
 }

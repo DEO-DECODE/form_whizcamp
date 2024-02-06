@@ -12,7 +12,11 @@ const UserForm = () => {
     hobbies: [],
     password: "",
   });
-
+  const options = [
+    { value: "B.E", label: "B.E" },
+    { value: "B.TECH", label: "B.TECH" },
+    { value: "DIPLOMA", label: "DIPLOMA" },
+  ];
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -134,9 +138,11 @@ const UserForm = () => {
             onChange={handleChange}
           >
             <option value="">Select Education</option>
-            <option value="B.E">B.E</option>
-            <option value="B.TECH">B.TECH</option>
-            <option value="DIPLOMA">DIPLOMA</option>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 
